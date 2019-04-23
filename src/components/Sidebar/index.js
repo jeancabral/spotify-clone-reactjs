@@ -38,7 +38,7 @@ const Sidebar = () => (
           <a href="">Artists</a>
         </li>
         <li>
-          <a href="">Statios</a>
+          <a href="">Station</a>
         </li>
         <li>
           <a href="">Local Files</a>
@@ -54,11 +54,17 @@ const Sidebar = () => (
         <li>
           <span>PLAYLISTS</span>
         </li>
+        <li>
+          <a href="">The Best of 90's</a>
+        </li>
+        <li>
+          <a href="">Songs of the Past</a>
+        </li>
       </Nav>
     </div>
     <NewPlaylist>
       <img src={AddPlayListIcon} alt="Adiconar playlist" />
-      Nova playlist
+      New playlist
     </NewPlaylist>
   </Container>
 );
