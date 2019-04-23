@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 72px;
+  height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #282828;
+  background: #181818;
   padding: 12px;
+  border-top: 1px solid #000;
 `;
 
 export const Current = styled.div`

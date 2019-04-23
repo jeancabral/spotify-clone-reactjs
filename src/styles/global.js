@@ -16,7 +16,7 @@ html, body, #root {
 body {
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    background: #181818;
+    background: #1E1E1E;
     text-rendering: optimizeLegibility !important;
     font-family: 'Montserrat', sans-serif;
     color: #fff;
