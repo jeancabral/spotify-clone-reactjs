@@ -1,23 +1,32 @@
 import React from 'react';
 
-import { Container, Nav, NewPlaylist } from './styles';
+import {
+  Container, Nav, MainNav, MainNavItem, NewPlaylist, Cover,
+} from './styles';
 
 import AddPlayListIcon from '../../assets/images/add_playlist.svg';
+import HomeIcon from '../../assets/images/home.svg';
+import HomeIconSelected from '../../assets/images/home_selected.svg';
+import BrowseIcon from '../../assets/images/browse.svg';
+import RadioIcon from '../../assets/images/radio.svg';
 
 const Sidebar = () => (
   <Container>
     <div>
-      <Nav main>
-        <li>
+      <MainNav>
+        <MainNavItem active>
+          <img src={HomeIconSelected} alt="Adiconar playlist" />
           <a href="">Home</a>
-        </li>
-        <li>
+        </MainNavItem>
+        <MainNavItem>
+          <img src={BrowseIcon} alt="Adiconar playlist" />
           <a href="">Browse</a>
-        </li>
-        <li>
+        </MainNavItem>
+        <MainNavItem>
+          <img src={RadioIcon} alt="Adiconar playlist" />
           <a href="">Radio</a>
-        </li>
-      </Nav>
+        </MainNavItem>
+      </MainNav>
       <Nav>
         <li>
           <span>YOUR LIBRARY</span>
@@ -66,6 +75,12 @@ const Sidebar = () => (
       <img src={AddPlayListIcon} alt="Adiconar playlist" />
       New playlist
     </NewPlaylist>
+    <Cover>
+      <img
+        src="https://ichef.bbci.co.uk/news/912/cpsprodpb/5DB7/production/_105319932_arianagrande.png"
+        alt="Cover"
+      />
+    </Cover>
   </Container>
 );
 

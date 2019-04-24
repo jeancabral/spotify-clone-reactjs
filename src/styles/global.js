@@ -22,6 +22,22 @@ body {
     color: #fff;
 }
 
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: #181818;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: #666;
+}
+
 `;
 
 export default GlobalStyle;

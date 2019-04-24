@@ -17,10 +17,6 @@ import ShuffleIcon from '../../assets/images/shuffle.svg';
 const Player = () => (
   <Container>
     <Current>
-      <img
-        src="https://ichef.bbci.co.uk/news/912/cpsprodpb/5DB7/production/_105319932_arianagrande.png"
-        alt="Cover"
-      />
       <div>
         <span>7 Rings</span>
         <small>Ariana Grande</small>
