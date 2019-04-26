@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.aside`
   height: 100%;
-  width: 200px;
+  width: 240px;
   background: #090a0c;
   color: #b3b3b3;
 
@@ -105,9 +105,9 @@ export const NewPlaylist = styled.button`
 
 export const Cover = styled.div`
   overflow-y: hidden !important;
-  height: 260px;
+  height: 290px;
   img {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
   }
 `;
