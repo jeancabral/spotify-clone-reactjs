@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import {
   Container, Nav, MainNav, MainNavItem, NewPlaylist, Cover,
 } from './styles';
@@ -20,7 +22,7 @@ const Sidebar = () => (
         </MainNavItem>
         <MainNavItem>
           <img src={BrowseIcon} alt="Adiconar playlist" />
-          <a href="">Browse</a>
+          <Link to="/">Browse</Link>
         </MainNavItem>
         <MainNavItem>
           <img src={RadioIcon} alt="Adiconar playlist" />
