@@ -105,7 +105,7 @@ export const NewPlaylist = styled.button`
 
 export const Cover = styled.div`
   overflow-y: hidden !important;
-  height: 290px;
+  height: 100%;
   img {
     width: 240px;
     height: 240px;

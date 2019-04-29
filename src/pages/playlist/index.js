@@ -13,7 +13,7 @@ function Playlist() {
           alt="Playlist"
         />
         <div>
-          <span>PALYLIST</span>
+          <span>PLAYLIST</span>
           <h1>The Best of 90's</h1>
           <p>15 songs</p>
           <button type="button">PLAY</button>
