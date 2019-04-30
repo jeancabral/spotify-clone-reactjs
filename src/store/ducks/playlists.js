@@ -1,14 +1,12 @@
-import Immutable from 'seamless-immutable';
-
 export const Types = {
   GET_REQUEST: 'playlists/GET_REQUEST',
   GET_SUCCESS: 'playlists/GET_SUCCESS',
 };
 
-const INITIAL_STATE = Immutable({
+const INITIAL_STATE = {
   data: [],
   loading: false,
-});
+};
 
 export default function playlists(state = INITIAL_STATE, action) {
   switch (action.type) {
