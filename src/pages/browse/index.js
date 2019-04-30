@@ -32,7 +32,10 @@ class Browse extends Component {
   render() {
     return (
       <Container>
-        <Title>Browse {this.props.playlists.loading && <Loading />}</Title>
+        <Title>
+Browse
+          {this.props.playlists.loading && <Loading />}
+        </Title>
         <List>
           {this.props.playlists.data.map(playlist => (
             <Playlist key={playlist.id} to={`/playlists/${playlist.id}`}>
