@@ -1,48 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 
 import {
   Container, Title, List, Playlist,
 } from './styles';
 
-const Browse = () => (
-  <Container>
-    <Title>Browse</Title>
+class Browse extends Component {
+  static propTypes = {
+    getPlaylistsRequest: PropTypes.func.isRequired,
+    playlists: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+        }),
+      ),
+    }).isRequired,
+  };
 
-    <List>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71EOHEwS4ML._SX355_.jpg"
-          alt="Playlist"
-        />
-        <strong>The Best of 90's</strong>
-        <p>Relax Code and Fun</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71EOHEwS4ML._SX355_.jpg"
-          alt="Playlist"
-        />
-        <strong>The Best of 90's</strong>
-        <p>Relax Code and Fun</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71EOHEwS4ML._SX355_.jpg"
-          alt="Playlist"
-        />
-        <strong>The Best of 90's</strong>
-        <p>Relax Code and Fun</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71EOHEwS4ML._SX355_.jpg"
-          alt="Playlist"
-        />
-        <strong>The Best of 90's</strong>
-        <p>Relax Code and Fun</p>
-      </Playlist>
-    </List>
-  </Container>
-);
+  componentDidMount() {
+    this.props.getPlaylistsRequest();
+  }
 
-export default Browse;
+  render() {
+    return (
+      <Container>
+        <Title>Browse</Title>
+
+        <List>
+          {this.props.playlists.data.map(playlist => (
+            <Playlist key={playlist.id} to={`/playlists/${playlist.id}`}>
+              <img src={playlist.thumbnail} alt="Playlist" />
+              <strong>{playlist.title}</strong>
+              <p>{playlist.description}</p>
+            </Playlist>
+          ))}
+        </List>
+      </Container>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  playlists: state.playlists,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(PlaylistsActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Browse);
