@@ -105,9 +105,9 @@ export const NewPlaylist = styled.button`
 
 export const Cover = styled.div`
   overflow-y: hidden !important;
-  height: 100%;
   img {
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    height: 100%;
+    min-height: 64px;
   }
 `;

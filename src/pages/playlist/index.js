@@ -19,75 +19,76 @@ function Playlist() {
           <button type="button">PLAY</button>
         </div>
       </Header>
+      <div>
+        <Songlist cellPadding={0} cellSpacing={0}>
+          <thead>
+            <th />
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>
+              <img src={ClockIcon} alt="Duration" />
+            </th>
+          </thead>
 
-      <Songlist cellPadding={0} cellSpacing={0}>
-        <thead>
-          <th />
-          <th>Title</th>
-          <th>Artist</th>
-          <th>Album</th>
-          <th>
-            <img src={ClockIcon} alt="Duration" />
-          </th>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              <img src={PlusIcon} alt="Add Song" />
-            </td>
-            <td>Papercut</td>
-            <td>Link PArk</td>
-            <td>Hibrid Theory</td>
-            <td>3:26</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={PlusIcon} alt="Add Song" />
-            </td>
-            <td>Papercut</td>
-            <td>Link PArk</td>
-            <td>Hibrid Theory</td>
-            <td>3:26</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={PlusIcon} alt="Add Song" />
-            </td>
-            <td>Papercut</td>
-            <td>Link PArk</td>
-            <td>Hibrid Theory</td>
-            <td>3:26</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={PlusIcon} alt="Add Song" />
-            </td>
-            <td>Papercut</td>
-            <td>Link PArk</td>
-            <td>Hibrid Theory</td>
-            <td>3:26</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={PlusIcon} alt="Add Song" />
-            </td>
-            <td>Papercut</td>
-            <td>Link PArk</td>
-            <td>Hibrid Theory</td>
-            <td>3:26</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={PlusIcon} alt="Add Song" />
-            </td>
-            <td>Papercut</td>
-            <td>Link PArk</td>
-            <td>Hibrid Theory</td>
-            <td>3:26</td>
-          </tr>
-        </tbody>
-      </Songlist>
+          <tbody>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Add Song" />
+              </td>
+              <td>Papercut</td>
+              <td>Link PArk</td>
+              <td>Hibrid Theory</td>
+              <td>3:26</td>
+            </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Add Song" />
+              </td>
+              <td>Papercut</td>
+              <td>Link PArk</td>
+              <td>Hibrid Theory</td>
+              <td>3:26</td>
+            </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Add Song" />
+              </td>
+              <td>Papercut</td>
+              <td>Link PArk</td>
+              <td>Hibrid Theory</td>
+              <td>3:26</td>
+            </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Add Song" />
+              </td>
+              <td>Papercut</td>
+              <td>Link PArk</td>
+              <td>Hibrid Theory</td>
+              <td>3:26</td>
+            </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Add Song" />
+              </td>
+              <td>Papercut</td>
+              <td>Link PArk</td>
+              <td>Hibrid Theory</td>
+              <td>3:26</td>
+            </tr>
+            <tr>
+              <td>
+                <img src={PlusIcon} alt="Add Song" />
+              </td>
+              <td>Papercut</td>
+              <td>Link PArk</td>
+              <td>Hibrid Theory</td>
+              <td>3:26</td>
+            </tr>
+          </tbody>
+        </Songlist>
+      </div>
     </Container>
   );
 }
