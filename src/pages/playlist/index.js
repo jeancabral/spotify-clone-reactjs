@@ -17,23 +17,35 @@ class Playlist extends Component {
     this.loadPlayListDetails();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.loadPlayListDetails();
+    }
+  }
+
   loadPlayListDetails = () => {
     const { id } = this.props.match.params;
     this.props.getPlaylistDetailsRequest(id);
   };
 
-  render() {
+  renderDetails = () => {
+    const playlist = this.props.playlistDetails.data;
+
     return (
       <Container>
         <Header>
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/71EOHEwS4ML._SX355_.jpg"
-            alt="Playlist"
-          />
+          <img src={playlist.thumbnail} alt={playlist.title} />
           <div>
             <span>PLAYLIST</span>
-            <h1>The Best of 90's</h1>
-            <p>15 songs</p>
+            <h1>{playlist.title}</h1>
+            {!!playlist.songs && (
+            <p>
+              {' '}
+              {playlist.songs.length}
+              {' '}
+songs
+            </p>
+            )}
             <button type="button">PLAY</button>
           </div>
         </Header>
@@ -50,64 +62,37 @@ class Playlist extends Component {
             </thead>
 
             <tbody>
-              <tr>
-                <td>
-                  <img src={PlusIcon} alt="Add Song" />
-                </td>
-                <td>Papercut</td>
-                <td>Link PArk</td>
-                <td>Hibrid Theory</td>
-                <td>3:26</td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={PlusIcon} alt="Add Song" />
-                </td>
-                <td>Papercut</td>
-                <td>Link PArk</td>
-                <td>Hibrid Theory</td>
-                <td>3:26</td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={PlusIcon} alt="Add Song" />
-                </td>
-                <td>Papercut</td>
-                <td>Link PArk</td>
-                <td>Hibrid Theory</td>
-                <td>3:26</td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={PlusIcon} alt="Add Song" />
-                </td>
-                <td>Papercut</td>
-                <td>Link PArk</td>
-                <td>Hibrid Theory</td>
-                <td>3:26</td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={PlusIcon} alt="Add Song" />
-                </td>
-                <td>Papercut</td>
-                <td>Link PArk</td>
-                <td>Hibrid Theory</td>
-                <td>3:26</td>
-              </tr>
-              <tr>
-                <td>
-                  <img src={PlusIcon} alt="Add Song" />
-                </td>
-                <td>Papercut</td>
-                <td>Link PArk</td>
-                <td>Hibrid Theory</td>
-                <td>3:26</td>
-              </tr>
+              {!playlist.songs ? (
+                <tr>
+                  <td colSpan={5}>Not found songs</td>
+                </tr>
+              ) : (
+                playlist.songs.map(song => (
+                  <tr>
+                    <td>
+                      <img src={PlusIcon} alt="Add Song" />
+                    </td>
+                    <td>{song.title}</td>
+                    <td>{song.author}</td>
+                    <td>{song.album}</td>
+                    <td>3:26</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </Songlist>
         </div>
       </Container>
+    );
+  };
+
+  render() {
+    return this.props.playlistDetails.loading ? (
+      <Container loading>
+        <Loading />
+      </Container>
+    ) : (
+      this.renderDetails()
     );
   }
 }
