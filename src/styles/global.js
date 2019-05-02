@@ -22,6 +22,10 @@ body {
     color: #fff;
 }
 
+button {
+    cursor: pointer;
+}
+
 ::-webkit-scrollbar
 {
   width: 12px;  /* for vertical scrollbars */

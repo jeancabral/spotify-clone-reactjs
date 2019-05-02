@@ -12,6 +12,7 @@ import Header from './components/Header';
 import { Wrapper, Container, Content } from './styles/components';
 import Routes from './routes';
 import store from './store';
+import ErrorBox from './components/ErrorBox';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
             <Container>
               <Sidebar />
               <Content>
+                <ErrorBox />
                 <Header />
                 <Routes />
               </Content>
