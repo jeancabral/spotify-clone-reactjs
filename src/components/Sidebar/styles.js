@@ -103,6 +103,10 @@ export const NewPlaylist = styled.button`
   align-items: center;
   padding: 25px;
 
+  @media (max-width: 1440px) {
+    height: 100px;
+  }
+
   &:hover {
     color: #fff;
   }
@@ -114,9 +118,13 @@ export const NewPlaylist = styled.button`
 
 export const Cover = styled.div`
   overflow-y: hidden !important;
+
+  @media (max-width: 1440px) {
+    height: 100%;
+  }
+
   img {
     width: 100%;
     height: 100%;
-    min-height: 64px;
   }
 `;

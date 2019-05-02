@@ -9,6 +9,7 @@ export const Container = styled.div`
   margin-top: 110px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 `;
 
 export const Title = styled.h1`

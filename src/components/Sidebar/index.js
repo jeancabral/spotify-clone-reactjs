@@ -100,12 +100,11 @@ class Sidebar extends Component {
           <img src={AddPlayListIcon} alt="Adiconar playlist" />
           New playlist
         </NewPlaylist>
-        <Cover>
-          <img
-            src="https://ichef.bbci.co.uk/news/912/cpsprodpb/5DB7/production/_105319932_arianagrande.png"
-            alt="Cover"
-          />
-        </Cover>
+        {!!this.props.player.currentSong && (
+          <Cover>
+            <img src={this.props.player.currentSong.thumbnail} alt="Cover" />
+          </Cover>
+        )}
       </Container>
     );
   }
@@ -113,6 +112,7 @@ class Sidebar extends Component {
 
 const mapStateToProps = state => ({
   playlists: state.playlists,
+  player: state.player,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(PlaylistsActions, dispatch);

@@ -2,6 +2,8 @@ import Sound from 'react-sound';
 
 export const Types = {
   LOAD: 'player/LOAD',
+  PLAY: 'player/PLAY',
+  PAUSE: 'player/PAUSE',
 };
 
 const INITIAL_STATE = {
