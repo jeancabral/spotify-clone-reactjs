@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Slider from 'rc-slider';
 import PropTypes from 'prop-types';
 
@@ -24,10 +24,14 @@ const Player = ({ player }) => (
     {!!player.currentSong && <Sound url={player.currentSong.file} playStatus={player.status} />}
 
     <Current>
-      <div>
-        <span>{!player.currentSong ? '' : player.currentSong.title}</span>
-        <small>{!player.currentSong ? '' : player.currentSong.author}</small>
-      </div>
+      {!!player.currentSong && (
+        <Fragment>
+          <div>
+            <span>{player.currentSong.title}</span>
+            <small>{player.currentSong.author}</small>
+          </div>
+        </Fragment>
+      )}
     </Current>
 
     <Progress>
