@@ -22,9 +22,13 @@ import PlayIcon from '../../assets/images/play.svg';
 import RepeatIcon from '../../assets/images/repeat.svg';
 import ShuffleIcon from '../../assets/images/shuffle.svg';
 
-const Player = ({ player, play, pause }) => (
+const Player = ({
+  player, play, pause, next, prev,
+}) => (
   <Container>
-    {!!player.currentSong && <Sound url={player.currentSong.file} playStatus={player.status} />}
+    {!!player.currentSong && (
+      <Sound url={player.currentSong.file} playStatus={player.status} onFinishedPlaying={next} />
+    )}
 
     <Current>
       {!!player.currentSong && (
@@ -43,7 +47,7 @@ const Player = ({ player, play, pause }) => (
           <img src={ShuffleIcon} alt="Shuffle" />
         </button>
         <button>
-          <img src={BackwardIcon} alt="Backward" />
+          <img src={BackwardIcon} alt="Backward" onClick={prev} />
         </button>
 
         {!!player.currentSong && player.status === Sound.status.PLAYING ? (
@@ -57,7 +61,7 @@ const Player = ({ player, play, pause }) => (
         )}
 
         <button>
-          <img src={FowardIcon} alt="Foward" />
+          <img src={FowardIcon} alt="Foward" onClick={next} />
         </button>
         <button>
           <img src={RepeatIcon} alt="Repeat" />
@@ -96,6 +100,8 @@ Player.propTypes = {
   }).isRequired,
   play: PropTypes.func.isRequired,
   pause: PropTypes.func.isRequired,
+  next: PropTypes.func.isRequired,
+  prev: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
