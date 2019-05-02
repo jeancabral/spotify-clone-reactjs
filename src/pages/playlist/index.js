@@ -7,7 +7,9 @@ import { bindActionCreators } from 'redux';
 import { Creators as PlaylistDetailsActions } from '../../store/ducks/playlistDetails';
 import { Creators as PlayerActions } from '../../store/ducks/player';
 
-import { Container, Header, Songlist } from './styles';
+import {
+  Container, Header, Songlist, SongItem,
+} from './styles';
 import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
 import Loading from '../../components/Loading';
@@ -37,6 +39,13 @@ class Playlist extends Component {
       loading: PropTypes.bool,
     }).isRequired,
     loadSong: PropTypes.func.isRequired,
+    currentSong: PropTypes.shape({
+      id: PropTypes.number,
+    }).isRequired,
+  };
+
+  state = {
+    selectedSong: null,
   };
 
   componentDidMount() {
@@ -94,7 +103,13 @@ songs
                 </tr>
               ) : (
                 playlist.songs.map(song => (
-                  <tr key={song.id} onDoubleClick={() => this.props.loadSong(song)}>
+                  <SongItem
+                    key={song.id}
+                    onClick={() => this.setState({ selectedSong: song.id })}
+                    onDoubleClick={() => this.props.loadSong(song)}
+                    selected={this.state.selectedSong === song.id}
+                    playing={this.props.currentSong && this.props.currentSong.id === song.id}
+                  >
                     <td>
                       <img src={PlusIcon} alt="Add Song" />
                     </td>
@@ -102,7 +117,7 @@ songs
                     <td>{song.author}</td>
                     <td>{song.album}</td>
                     <td>3:26</td>
-                  </tr>
+                  </SongItem>
                 ))
               )}
             </tbody>
@@ -125,6 +140,7 @@ songs
 
 const mapStateToProps = state => ({
   playlistDetails: state.playlistDetails,
+  currentSong: state.player.currentSong,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ ...PlaylistDetailsActions, ...PlayerActions }, dispatch);
