@@ -23,11 +23,16 @@ import RepeatIcon from '../../assets/images/repeat.svg';
 import ShuffleIcon from '../../assets/images/shuffle.svg';
 
 const Player = ({
-  player, play, pause, next, prev,
+  player, play, pause, next, prev, playing, position, duration,
 }) => (
   <Container>
     {!!player.currentSong && (
-      <Sound url={player.currentSong.file} playStatus={player.status} onFinishedPlaying={next} />
+      <Sound
+        url={player.currentSong.file}
+        playStatus={player.status}
+        onFinishedPlaying={next}
+        onPlaying={playing}
+      />
     )}
 
     <Current>
@@ -68,7 +73,7 @@ const Player = ({
         </button>
       </Controls>
       <Time>
-        <span>1:30</span>
+        <span>{position}</span>
         <ProgressSlider>
           <Slider
             railStyle={{ background: '#404040', borderRadius: 10 }}
@@ -76,7 +81,7 @@ const Player = ({
             handleStyle={{ border: 0 }}
           />
         </ProgressSlider>
-        <span>4:30</span>
+        <span>{duration}</span>
       </Time>
     </Progress>
 
@@ -102,10 +107,24 @@ Player.propTypes = {
   pause: PropTypes.func.isRequired,
   next: PropTypes.func.isRequired,
   prev: PropTypes.func.isRequired,
+  playing: PropTypes.func.isRequired,
+  position: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
 };
+
+function msToTime(duration) {
+  let seconds = parseInt((duration / 1000) % 60, 10);
+  const minutes = parseInt((duration / (1000 * 60)) % 60, 10);
+
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  return `${minutes}:${seconds}`;
+}
 
 const mapStateToProps = state => ({
   player: state.player,
+  position: msToTime(state.player.position),
+  duration: msToTime(state.player.duration),
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(PlayerActions, dispatch);
